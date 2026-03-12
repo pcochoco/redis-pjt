@@ -3,7 +3,7 @@ import { check, sleep } from 'k6';
 import { randomIntBetween } from 'https://jslib.k6.io/k6-utils/1.2.0/index.js';
 
 export const options = {
-  // 가상 유저(VUs) 1000명으로 설정
+  // 가상 유저(VUs) 1000명으로 설정 (1000명이 동시에 요청)
   vus: 1000,
 
   // 테스트를 10초 동안 진행
@@ -11,13 +11,13 @@ export const options = {
 };
 
 export default function () {
-  // 랜덤 데이터 생성
+  // 랜덤 데이터 조합
   // 유저는 1~10,000명, 게시글은 1~100개라고 가정
   const userId = randomIntBetween(1, 10000);
   const postId = randomIntBetween(1, 100);
 
   // 좋아요 API
-  const url = 'http://localhost:8080/likes';
+  const url = 'http://host.docker.internal:8080/likes';
   const payload = JSON.stringify({
     userId: userId,
     postId: postId,
