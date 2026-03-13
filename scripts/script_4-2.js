@@ -19,7 +19,7 @@ export default function () {
     },
   };
 
-  const recordRes = http.post('http://localhost:8080/dau/record/redis', payload, params);
+  const recordRes = http.post('http://app:8080/dau/record/redis', payload, params);
 
   check(recordRes, {
     'record status is 200': (r) => r.status === 200,
@@ -28,7 +28,7 @@ export default function () {
   // 2. DAU 조회
   // 오늘 날짜를 YYYY-MM-DD 형식으로 가져온다.
   const today = new Date().toISOString().split('T')[0];
-  const countRes = http.get(`http://localhost:8080/dau/count/redis?date=${today}`);
+  const countRes = http.get(`http://app:8080/dau/count/redis?date=${today}`);
 
   check(countRes, {
     'count status is 200': (r) => r.status === 200,

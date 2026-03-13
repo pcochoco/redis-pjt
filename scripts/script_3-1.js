@@ -24,14 +24,14 @@ export default function () {
   const keyword = randomItem(keywords);
   
   // 검색 요청
-  const searchRes = http.get(`http://localhost:8080/search?keyword=${keyword}`);
+  const searchRes = http.get(`http://app:8080/search?keyword=${keyword}`);
   
   check(searchRes, {
     'search status is 200': (r) => r.status === 200,
   });
 
   // 2. 인기 검색어 조회 API 호출
-  const top10Res = http.get('http://localhost:8080/search/top10');
+  const top10Res = http.get('http://app:8080/search/top10');
   
   check(top10Res, {
     'top10 status is 200': (r) => r.status === 200,
