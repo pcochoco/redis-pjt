@@ -11,7 +11,7 @@ export const options = {
 
 export default function () {
   // 재고 차감 API
-  const url = 'http://localhost:8080/stocks/1/decrease/redis';
+  const url = 'http://app:8080/stocks/1/decrease/redis';
 
   const params = {
     headers: {
@@ -21,6 +21,9 @@ export default function () {
 
   // POST 요청 전송
   const res = http.post(url, null, params);
+
+  console.log(`status: ${res.status}`);
+  console.log(`body: ${res.body}`);
 
   // 1초 간격으로 요청 발송
   sleep(1);
