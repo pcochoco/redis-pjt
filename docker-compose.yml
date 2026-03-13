@@ -5,6 +5,7 @@ services:
     environment:
       MYSQL_DATABASE: mydb
       MYSQL_ROOT_PASSWORD: password
+    command: --mysql-native-password=ON
     ports:
       - "3310:3306"
     deploy:
