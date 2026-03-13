@@ -5,7 +5,6 @@ services:
     environment:
       MYSQL_DATABASE: mydb
       MYSQL_ROOT_PASSWORD: password
-    command: --mysql-native-password=ON
     ports:
       - "3310:3306"
     deploy:
@@ -35,6 +34,7 @@ services:
     container_name: spring-app
     ports:
       - "8080:8080"
+    restart: always
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/mydb?rewriteBatchedInserts=true
       SPRING_DATASOURCE_USERNAME: root

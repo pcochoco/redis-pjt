@@ -11,7 +11,7 @@ export const options = {
 
 export default function () {
   // 재고 차감 API
-  const url = 'http://localhost:8080/stocks/1/decrease';
+  const url = 'http://host.docker.internal:8080/stocks/1/decrease';
 
   const params = {
     headers: {
