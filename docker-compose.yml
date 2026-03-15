@@ -26,6 +26,10 @@ services:
     container_name: redis-cache
     ports:
       - "6379:6379"
+    #top 10 검색어 저장용
+    volumes:
+      - redis-data:/data
+    command: ["redis-server", "--appendonly", "yes"] #aof로 redis 명령 디스크에 기록
 
   app:
     build:
@@ -47,6 +51,6 @@ services:
       redis:
         condition: service_started
 
-#volumes:
+volumes:
+  redis-data:
 #  mysql_data:
-

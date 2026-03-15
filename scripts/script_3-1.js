@@ -10,7 +10,7 @@ export const options = {
   duration: '10s',
 };
 
-// 검색어 리스트 정의
+// 검색어 리스트 정의(랜덤)
 const keywords = [
   'spring', 'java', 'redis', 'mysql', 'jpa',
   'k6', 'performance', 'test', 'load', 'stress',
