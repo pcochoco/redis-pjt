@@ -24,11 +24,15 @@ public class RateLimiter {
 
         redisTemplate
                 .opsForZSet()
-                .removeRangeByScore(redisKey, 0, now);
+                .removeRangeByScore(redisKey, 0, now - RATE_LIMIT_TIME_MS);
 
         Long count = redisTemplate
                 .opsForZSet()
                 .size(redisKey);
+
+        if(count > MAX_REQUESTS){
+            return false;
+        }
 
         redisTemplate
                 .opsForZSet()
@@ -36,6 +40,6 @@ public class RateLimiter {
 
         redisTemplate.expire(redisKey, RATE_LIMIT_TIME_MS, TimeUnit.MILLISECONDS);
 
-        return count <= MAX_REQUESTS;
+        return true;
     }
 }
